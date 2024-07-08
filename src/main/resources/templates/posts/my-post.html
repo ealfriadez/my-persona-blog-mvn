@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Post</title>
+    <!-- BOOTSTRAP CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <div th:include="posts/layout.html::header-app"></div>
+
+	<div class="container mt-4">
+	    <h1>Published Publications</h1>
+	    <div th:each="post : ${posts}" class="card mb-3">
+	        <div class="card-body">
+	            <h3 class="card-title" th:text="${post.title}"></h3>
+	            <p class="card-text" th:text="${post.created_at}"></p>
+	            <p class="card-text" th:text="${post.content}"></p>
+	            <a th:href="@{/post/postPage/{id} (id=${post.id}) }" class="btn btn-primary me-2"><img src="/img/see.png" alt="see"></a>
+	            <a th:href="@{/post/edit/{id} (id=${post.id}) }" class="btn btn-warning me-2"><img src="/img/edit.png" alt="edit"></a>
+	            <a th:href="@{/post/delete/{id} (id=${post.id}) }" class="btn btn-danger float-end"><img src="/img/delete.png" alt="delete"></a>
+	        </div>
+	    </div>
+	</div>    
+
+    <!-- BOOTSTRAP JS -->
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.js}"></script>
+</body>
+</html>

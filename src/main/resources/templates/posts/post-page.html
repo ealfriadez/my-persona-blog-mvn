@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Page</title>
+    <!-- BOOTSTRAP CSS -->
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <div th:include="posts/layout.html::header-app"></div>
+
+	<div class="container mt-5">
+	  <div class="card">
+	    <div class="card-header">
+	      <h5 class="card-title" th:text="${post.title}"></h5>
+	      <strong><p class="text-danger" th:text="${post.user.username}"></p></strong>
+	      <span th:text="${post.created_at}"></span>
+	    </div>
+	    <div class="card-body">
+	      <p class="card-text" th:text="${post.content}"></p>
+	    </div>
+
+	    <!-- comment -->
+	    <div th:if="${not #lists.isEmpty(comments)}">
+	      <ul class="list-group list-group-flush">
+	        <li th:each="comment : ${comments}" class="list-group-item">
+	          <div class="d-flex justify-content-between">
+	            <h6 class="mb-0 text-primary" th:text="${comment.user.name}"></h6>
+	            <small th:text="${comment.created_at}"></small>
+	          </div>
+	          <div class="d-flex justify-content-between">
+	            <p class="mb-0" th:text="${comment.content}"></p>
+	            <!-- buttons -->
+	            <div th:if="${ user != null && user.id == comment.user.id}">
+	              <a class="btn btn-sm btn-warning me-1" th:href="@{/comment/edit/{id} (id=${comment.id}) }"><img src="/img/edit_comment.png" alt="edit_comment"></a>
+	              <a class="btn btn-sm btn-danger me-1" th:href="@{/comment/delete/{id} (id=${comment.id}) }"><img src="/img/delete_comment.png" alt="delete_comment"></a>
+	            </div>
+	          </div>
+	        </li>
+	      </ul>
+	    </div>
+
+	    <div class="card-footer">
+	      <form th:action="@{/comment/addComment}" method="post">
+	        <div class="mb-3">
+	          <input type="hidden" name="postId" th:value="${post.id}" />
+	          <label for="content" class="form-label">Add a comment:</label>
+	          <textarea class="form-control" id="content" name="content" rows="3" autocomplete="off"></textarea>
+	        </div>
+	        <div class="text-end">
+	          <button type="submit" class="btn btn-secondary">Comment</button>
+	        </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>    
+
+    <!-- BOOTSTRAP JS -->
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.js}"></script>
+</body>
+</html>

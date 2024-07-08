@@ -1,4 +1,4 @@
-package pe.edu.unfv;
+package pe.edu.unfv.mypersonablog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
