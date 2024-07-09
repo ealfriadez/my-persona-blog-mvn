@@ -13,5 +13,5 @@ public interface PostService {
     void createPost(PostEntity post);
     void updatePost(Long id, PostEntity post);
     void deletePostBy(Long id);
-    List<PostEntity> seearchPostByTitle(String title);
+    List<PostEntity> searchPostByTitle(String title);
 }

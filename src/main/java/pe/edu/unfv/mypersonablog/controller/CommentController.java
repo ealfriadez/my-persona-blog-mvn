@@ -63,7 +63,7 @@ public class CommentController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public String editComment(@PathVariable Long id){
+	public String deleteComment(@PathVariable Long id){
 		CommentEntity comment = commentService.getCommentById(id).orElseThrow(() -> new IllegalArgumentException("¡Invalid comment id!"));
 		commentService.deleteComment(id);
 		return "redirect:/post/postPage/" + comment.getPost().getId();

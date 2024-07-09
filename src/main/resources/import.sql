@@ -2,6 +2,7 @@
 INSERT INTO tbl_users (name, email, username, password) VALUES ('Usuario1', 'usuario1@example.com', 'user1', 'password1');
 INSERT INTO tbl_users (name, email, username, password) VALUES ('Usuario2', 'usuario2@example.com', 'user2', 'password2');
 INSERT INTO tbl_users (name, email, username, password) VALUES ('Usuario3', 'usuario3@example.com', 'user3', 'password3');
+INSERT INTO tbl_users (name, email, username, password) VALUES ('zzz', 'zzz@example.com', 'zzz', '$2a$10$2GBxKlV8JzV0x2Zpstz7b..SdupbDgz.2B7YPjtvpJtNqqZPLsc8a');
 
 
 -- INSERT POSTS

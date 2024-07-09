@@ -49,7 +49,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostEntity> seearchPostByTitle(String title) {
+    public List<PostEntity> searchPostByTitle(String title) {
         return postRepository.findByTitleContainingIgnoreCase(title);
     }
 }
