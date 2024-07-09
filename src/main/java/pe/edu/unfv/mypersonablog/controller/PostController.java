@@ -95,7 +95,7 @@ public class PostController {
     @GetMapping("/search")
     public String searchPosts(@RequestParam("title") String title, Model model) {
         List<PostEntity> posts = postService.searchPostByTitle(title);
-        model.addAttribute("post", posts);
+        model.addAttribute("posts", posts);
         return "/posts/home";
     }
 }
